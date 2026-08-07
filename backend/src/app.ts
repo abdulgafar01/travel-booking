@@ -1,22 +1,30 @@
-import express from 'express';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import packageRoutes from './routes/packageRoutes.js';
-import { errorHandler } from './middleware/errorHandler.js';
-import notFound from './middleware/notFound.js';
+import "dotenv/config";
 
-dotenv.config();
+import express from "express";
+import cors from "cors";
+
+import packageRoutes from "./routes/packageRoutes.js";
+import notFound from "./middleware/notFound.js";
+import {errorHandler} from "./middleware/errorHandler.js";
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL,
+  })
+);
+
 app.use(express.json());
 
-app.get('/health', (_req, res) => {
-  res.status(200).json({ status: 'ok' });
+app.get("/api/health", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Travel booking API is running",
+  });
 });
 
-app.use('/api/packages', packageRoutes);
+app.use("/api/packages", packageRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

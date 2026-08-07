@@ -1,5 +1,32 @@
 import mongoose from "mongoose";
 import Package from "../models/Package.js";
+export const createPackage = async (req, res, next) => {
+    try {
+        const { title, description, availableSlots, price } = req.body;
+        if (!title || !description || availableSlots === undefined || price === undefined) {
+            res.status(400).json({
+                success: false,
+                message: "Please provide title, description, availableSlots and price",
+            });
+            return;
+        }
+        // Test comment: use this endpoint to create a package manually.
+        const newPackage = await Package.create({
+            title,
+            description,
+            availableSlots,
+            price,
+        });
+        res.status(201).json({
+            success: true,
+            message: "Package created successfully",
+            data: newPackage,
+        });
+    }
+    catch (error) {
+        next(error);
+    }
+};
 export const getPackages = async (req, res, next) => {
     try {
         const packages = await Package.find().sort({

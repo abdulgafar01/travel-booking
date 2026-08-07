@@ -1,6 +1,7 @@
 import { Router } from "express";
-import { getPackages, bookPackage, } from "../controllers/packageController.js";
+import { createPackage, getPackages, bookPackage, } from "../controllers/packageController.js";
 const router = Router();
 router.get("/", getPackages);
+router.post("/", createPackage);
 router.post("/:id/book", bookPackage);
 export default router;
