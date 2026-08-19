@@ -1,7 +1,15 @@
 import type { Metadata } from "next";
+import { Inter, Crushed } from "next/font/google";
 import "./globals.css";
 import Providers from "@/providers/providers";
+import Navbar from "@/components/Navbar";
 
+const inter = Inter({ subsets: ["latin"] });
+const crushed = Crushed({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-crushed",
+});
 
 export const metadata: Metadata = {
   title: "Travel Packages",
@@ -15,8 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className={`${inter.className} ${crushed.variable}`}>
         <Providers>
+          {/* <Navbar/> */}
           {children}
         </Providers>
       </body>
