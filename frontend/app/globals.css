@@ -118,9 +118,7 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-@utility font-crushed {
-  font-family: var(--font-crushed), sans-serif;
-}
+
 
 @layer base {
   * {
@@ -132,4 +130,20 @@
   html {
     @apply font-sans;
   }
+}
+
+@layer utilities {
+  .noscrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .noscrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .font-crushed {
+  font-family: var(--font-crushed), sans-serif;
+}
+
 }

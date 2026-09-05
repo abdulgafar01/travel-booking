@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Navbar from "@/components/Navbar";
+import TopDestinations from "./Homepage/destinations/TopDestinations";
 
 const Hero = () => {
     const heroRef = useRef<HTMLElement>(null);
@@ -26,6 +27,8 @@ const Hero = () => {
     );
 
     return (
+      <section>
+
         <section
             ref={heroRef}
             className="relative overflow-hidden min-h-screen bg-cover bg-center text-white"
@@ -269,6 +272,10 @@ const Hero = () => {
       />
 
         </section>
+       
+            <TopDestinations />
+      
+      </section>
     );
 };
 

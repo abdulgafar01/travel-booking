@@ -3,6 +3,7 @@ import { Inter, Crushed } from "next/font/google";
 import "./globals.css";
 import Providers from "@/providers/providers";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 const crushed = Crushed({
@@ -27,6 +28,7 @@ export default function RootLayout({
         <Providers>
           {/* <Navbar/> */}
           {children}
+          <Footer/>
         </Providers>
       </body>
     </html>
